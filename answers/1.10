@@ -1,0 +1,2 @@
+docker exec -it back-api sh
+cat /etc/*release

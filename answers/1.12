@@ -1,0 +1,3 @@
+docker network create lab-net
+docker run -d --name back-api --network lab-net -p 8080:5000 -e CURRENT_ENVIRONMENT=dev melvj1166/lab-back:latest
+docker run -d --name front-web --network lab-net -p 8081:80 -e WS_BACK_URL=http://back-api:5000 melvj1166/lab-front:latest

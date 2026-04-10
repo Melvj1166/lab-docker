@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  back:
+    image: melvj1166/lab-back:latest
+    ports:
+      - "8080-8082:5000"
+    environment:
+      - CURRENT_ENVIRONMENT=docker-compose
+    # volumes:
+    #   - ./data/back-logs:/app/logs
+  front:
+    image: melvj1166/lab-front:latest
+    depends_on:
+      - back
+    ports:
+      - "8090:80"
+    environment:
+      - WS_BACK_URL=http://back:5000
